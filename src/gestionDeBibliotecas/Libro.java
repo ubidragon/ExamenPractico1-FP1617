@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public interface Libro {
 	
 	String getISBN();
-	String getTitutlo();
+	String getTitulo();
 	String getAutor();
 	Integer getNumPaginas();
 	LocalDate getFechaAdquisicion();
@@ -16,7 +16,7 @@ public interface Libro {
 	Boolean getEsBestSeller();
 	TipoPrestamo getTipoPrestamo();
 	
-	void diasPrestamo(TipoPrestamo prestamo);
+	String diasPrestamo(TipoPrestamo prestamo);
 	void setNumeroCopias(Integer copias);
 	void cambioPrestamo(TipoPrestamo prestamo);
 	

@@ -12,7 +12,7 @@ public interface MedioAudiovisual {
 	Double getPrecio();
 	TipoMedioAudiovisual getTipo();
 	Integer getNumeroDisco();
-	Prestamo getPrestamo();
+	TipoPrestamo getPrestamo();
 	
 	void setPrestamo(TipoPrestamo prestamo);
 	
