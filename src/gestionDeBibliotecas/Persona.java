@@ -5,7 +5,6 @@ import java.time.LocalDate;
 public interface Persona {
 
 	String getDNI();
-	
 
 	String getNombre();
 
@@ -22,10 +21,11 @@ public interface Persona {
 	void setNombre(String nombre);
 
 	void setApellidos(String apellidos);
-	
+
 	void setFecha(LocalDate fecha);
-	
+
 	void setEmail(String email);
-	//No se añade un set de edad ya que es una propiedad derivada de la fecha de nacimiento
-	
+	// No se añade un set de edad ya que es una propiedad derivada de la fecha
+	// de nacimiento
+
 }

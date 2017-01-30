@@ -3,7 +3,6 @@ package gestionDeBibliotecas;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-
 public class PersonaImpl implements Persona {
 
 	private String dni, nombre, apellidos, email;// tambien se pueden
@@ -18,7 +17,7 @@ public class PersonaImpl implements Persona {
 	 * CONSTRUCTOR 1 propiedades basicas del tipo
 	 **/
 
-	public PersonaImpl(String dni, String nombre, String apellidos,LocalDate fecha, String email ) {
+	public PersonaImpl(String dni, String nombre, String apellidos, LocalDate fecha, String email) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -69,47 +68,46 @@ public class PersonaImpl implements Persona {
 	}
 
 	public void setDNI(String dni) {
-		
+
 		this.dni = dni;
 
 	}
 
 	public void setNombre(String nombre) {
-		
+
 		this.nombre = nombre;
-		
+
 	}
-	
+
 	public void setApellidos(String apellidos) {
-		
+
 		this.apellidos = apellidos;
-		
+
 	}
 
 	public void setFecha(LocalDate fecha) {
-		
+
 		this.fecha = fecha;
-		
+
 	}
 
 	public void setEmail(String email) {
-		
+
 		this.email = email;
-		
 
 	}
-	
-	private String formateadorFechas(LocalDate fechas){
+
+	private String formateadorFechas(LocalDate fechas) {
 		DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/mm/yyyy");
 		String res = fechas.format(f);
 		return res;
-		
+
 	}
 
 	public String toString() {
-		
+
 		return getDNI() + " - " + getApellidos() + ", " + getNombre() + " - " + formateadorFechas(this.fecha);
-		
+
 	}
 
 }

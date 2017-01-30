@@ -13,7 +13,7 @@ public class PrestamoImpl implements Prestamo {
 		this.user = user;
 		this.book = book;
 		this.fechaPrestamo = fechaPrestamo;
-		
+
 	}
 
 	public Persona getUsuario() {
@@ -30,11 +30,11 @@ public class PrestamoImpl implements Prestamo {
 
 		return fechaPrestamo;
 	}
-	
-	private Integer conversor(TipoPrestamo prestamo){
+
+	private Integer conversor(TipoPrestamo prestamo) {
 		Integer res = 0;
-		switch(prestamo){
-		
+		switch (prestamo) {
+
 		case DIARIO:
 			res = 1;
 			break;
@@ -42,17 +42,17 @@ public class PrestamoImpl implements Prestamo {
 			res = 7;
 			break;
 		case MENSUAL:
-			res=30;
+			res = 30;
 			break;
 		}
-		
+
 		return res;
 	}
 
 	public LocalDate getFechaDevolucion() {
-		
+
 		return getFechaPrestamo().plusDays(conversor(book.getTipoPrestamo()));
-		
+
 	}
 
 	public void setFechaPrestamo(LocalDate prestamo) {
