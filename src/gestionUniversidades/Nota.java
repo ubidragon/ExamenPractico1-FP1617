@@ -11,6 +11,8 @@ public interface Nota {
 	Convocatoria getConvocatoria();
 
 	Double getValor();
+	
+	Calificacion getCalificacion();
 
 	Boolean getMencionHonor();
 
