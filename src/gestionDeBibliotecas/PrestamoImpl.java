@@ -51,7 +51,7 @@ public class PrestamoImpl implements Prestamo {
 
 	public LocalDate getFechaDevolucion() {
 
-		return getFechaPrestamo().plusDays(conversor(book.getTipoPrestamo()));
+		return getFechaPrestamo().plusDays(conversor(book.getPrestamo()));
 
 	}
 

@@ -9,135 +9,156 @@ import fp.utiles.Checkers;
 public class GestorPeliculasFavoritasImpl implements GestorPeliculasFavoritas {
 	private String id, nombre;
 	private Set<Pelicula> peliculas;
-	
+
 	public GestorPeliculasFavoritasImpl(String id, String nombre) {
 		this.id = id;
 		this.nombre = nombre;
 		this.peliculas = new HashSet<>();
 	}
+
 	public GestorPeliculasFavoritasImpl(String id, String nombre, Set<Pelicula> peliculas) {
 		this.id = id;
 		this.nombre = nombre;
 		this.peliculas = new HashSet<>(peliculas);
 	}
 
-	@Override
 	public String getId() {
 		return this.id;
 	}
 
-	@Override
 	public String getNombre() {
 		return this.nombre;
 	}
 
-	@Override
 	public Set<Pelicula> getPeliculas() {
 		return new HashSet<>(this.peliculas);
 	}
 
-	@Override
 	public void nuevaPelicula(Pelicula pelicula) {
 		Checkers.checkNoNull(pelicula);
 		this.peliculas.add(pelicula);
 	}
 
-	@Override
 	public void nuevasPeliculas(Collection<Pelicula> peliculas) {
 		Checkers.checkNoNull(peliculas);
 		this.peliculas.addAll(peliculas);
-}
+	}
 
-	@Override
 	public void eliminaPelicula(Pelicula pelicula) {
 		Checkers.checkNoNull(pelicula);
 		this.peliculas.remove(pelicula);
 	}
 
-	@Override
 	public Integer cuentaPeliculas(String nombreActor) {
-		// TODO: Se resolverá en clase
-		return null;
+
+		Integer res = 0;
+
+		for (Pelicula m : getPeliculas()) {
+			if (m.esActor(nombreActor)) {
+				res++;
+			}
+		}
+
+		return res;
 	}
 
-	@Override
+	private Set<MiembroStaff> getActores() {
+		Set<MiembroStaff> res = new HashSet<>();
+		for (Pelicula p : getPeliculas()) {
+			res.addAll(p.getActores());
+		}
+		return res;
+	}
+
 	public MiembroStaff getActorMasPeliculas() {
-		// TODO: Se resolverá en clase
-		return null;
+
+		MiembroStaff res = null;
+
+		for (MiembroStaff m : getActores()) {
+			if (res == null || cuentaPeliculas(res.getNombre()) < cuentaPeliculas(m.getNombre())) {
+				res = m;
+			}
+		}
+
+		return res;
 	}
 
-
-	@Override
 	public Boolean hayAlgunaPeliculaDirigidaPor(String nombreDirector) {
-		// TODO: Se resolverá en clase
-		return null;
+
+		Boolean res = false;
+		for (Pelicula p : getPeliculas()) {
+			if (p.esDirector(nombreDirector)) {
+				res = true;
+			}
+		}
+		return res;
 	}
 
-	@Override
 	public Pelicula getPeliculaMasActores() {
-		// TODO: Se resolverá en clase
-		return null;
-	}
-	
-	@Override
-	public Set<String> getGeneros() {
-		// TODO: Se resolverá en clase
+
+		Pelicula res = null;
+
+		for (Pelicula p : getPeliculas()) {
+			if (res == null || p.getActores().size() > res.getActores().size())
+				res = p;
+		}
+
 		return null;
 	}
 
+	public Set<String> getGeneros() {
+		
+		Set<String> res = new HashSet<>();
+		
+		for(Pelicula p: getPeliculas()){
+			res.addAll(p.getGeneros());
+		}
+			
+		return res;
+	}
 
 	// A partir de aquí, para resolver en casa
-	
-	@Override
+
 	public Set<MiembroStaff> seleccionaActoresParticipantesTodas() {
 		// TODO: Hacer en casa
 		return null;
 	}
 
-	@Override
 	public Set<Pelicula> getPeliculasDirigidasPor(String nombreDirector) {
-		// TODO: Hacer en casa 	
+		// TODO: Hacer en casa
 		return null;
 	}
 
-	@Override
 	public Set<Pelicula> getPeliculasAnyo(Integer anyo) {
 		// TODO: Hacer en casa
 		return null;
 	}
 
-	@Override
 	public Set<Pelicula> getPeliculasDeActor(String nombreActor) {
 		// TODO: Hacer en casa
 		return null;
 	}
 
-	@Override
 	public Set<String> getPaises() {
 		// TODO: Hacer en casa
 		return null;
 	}
 
-	@Override
 	public boolean equals(Object obj) {
 		boolean res = false;
-		if(obj instanceof GestorPeliculasFavoritas) {
+		if (obj instanceof GestorPeliculasFavoritas) {
 			GestorPeliculasFavoritas gestor = (GestorPeliculasFavoritas) obj;
 			res = this.getId().equals(gestor.getId());
 		}
 		return res;
 	}
-	
-	@Override
+
 	public int hashCode() {
 		return this.getId().hashCode();
 	}
 
-	@Override
 	public String toString() {
 		return getNombre() + " [" + getId() + "]";
 	}
 
-	
-	
 }

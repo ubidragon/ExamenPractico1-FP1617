@@ -2,33 +2,26 @@ package gestionDeBibliotecas;
 
 import java.time.LocalDate;
 
-public class LibroImpl implements Libro {
-	private String isbn, titulo, autor;
+public class LibroImpl extends MedioImpl implements Libro {
+	private String isbn, autor;
 	private Integer paginas, copias;
-	private LocalDate fechaAdquisicion;
-	private Double precio;
-	private TipoPrestamo prestamo;
+
 
 	public LibroImpl(String isbn, String titulo, String autor, Integer paginas, LocalDate fechaAdquisicion,
 			Double precio, Integer copias, TipoPrestamo prestamo) {
+		super(titulo, fechaAdquisicion, precio, prestamo);
 		this.isbn = isbn;
-		this.titulo = titulo;
+		
 		this.autor = autor;
 		this.paginas = paginas;
 		this.copias = copias;
-		this.fechaAdquisicion = fechaAdquisicion;
-		this.precio = precio;
-		this.prestamo = prestamo;
+	
+	
 	}
 
 	public String getISBN() {
 
 		return isbn;
-	}
-
-	public String getTitulo() {
-
-		return titulo;
 	}
 
 	public String getAutor() {
@@ -41,15 +34,6 @@ public class LibroImpl implements Libro {
 		return paginas;
 	}
 
-	public LocalDate getFechaAdquisicion() {
-
-		return fechaAdquisicion;
-	}
-
-	public Double getPrecio() {
-
-		return precio;
-	}
 
 	public Integer getNumeroCopias() {
 
@@ -67,22 +51,18 @@ public class LibroImpl implements Libro {
 		return res;
 	}
 
-	public TipoPrestamo getTipoPrestamo() {
 
-		return prestamo;
-	}
-
-	public String diasPrestamo(TipoPrestamo prestamo) {
-		String res = null;
+	public Integer getDiasPrestamo(TipoPrestamo prestamo) {
+		Integer res = 0;
 		switch (prestamo) {
 		case DIARIO:
-			res = "1 dia";
+			res = 1;
 			break;
 		case SEMANAL:
-			res = "7 dias";
+			res = 7;
 			break;
 		case MENSUAL:
-			res = "30 dias";
+			res = 30;
 			break;
 		default:
 			res = null;
@@ -98,11 +78,6 @@ public class LibroImpl implements Libro {
 
 	}
 
-	public void cambioPrestamo(TipoPrestamo prestamo) {
-
-		this.prestamo = prestamo;
-
-	}
 
 	public String toString() {
 

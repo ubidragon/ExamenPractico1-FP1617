@@ -3,25 +3,25 @@ package gestionDeBibliotecas;
 import java.time.Duration;
 import java.time.LocalDate;
 
-public class MedioAudiovisualImpl implements MedioAudiovisual {
+public class MedioAudiovisualImpl extends MedioImpl implements MedioAudiovisual {
 
-	private String codigo, titulo;
-	private Duration duracion;
-	private Double precio;
+	private String codigo;
+	private Integer duracion;
+
 	private TipoMedioAudiovisual tipo;
 	private Integer discos;
-	private LocalDate adquisicion;
-	private TipoPrestamo prestamo;
 
-	public MedioAudiovisualImpl(String codigo, String titulo, Duration duracion, LocalDate adquisicion, Double precio,
-			TipoMedioAudiovisual tipo, Integer discos) {
+
+	public MedioAudiovisualImpl(String codigo, String titulo, Integer duracion, LocalDate adquisicion, Double precio,
+			TipoMedioAudiovisual tipo, Integer discos, TipoPrestamo prestamo) {
+		super(titulo, adquisicion, precio, prestamo);
 		this.codigo = codigo;
-		this.titulo = titulo;
+		
 		this.duracion = duracion;
-		this.precio = precio;
+		
 		this.tipo = tipo;
 		this.discos = discos;
-		this.adquisicion = adquisicion;
+	
 	}
 
 	public String getCodigo() {
@@ -29,25 +29,12 @@ public class MedioAudiovisualImpl implements MedioAudiovisual {
 		return codigo;
 	}
 
-	public String getTitulo() {
 
-		return titulo;
-	}
-
-	public Duration getDuracion() {
+	public Integer getDuracion() {
 
 		return duracion;
 	}
 
-	public LocalDate getFechaAdquisicion() {
-
-		return adquisicion;
-	}
-
-	public Double getPrecio() {
-
-		return precio;
-	}
 
 	public TipoMedioAudiovisual getTipo() {
 
@@ -57,18 +44,6 @@ public class MedioAudiovisualImpl implements MedioAudiovisual {
 	public Integer getNumeroDisco() {
 
 		return discos;
-	}
-
-	public TipoPrestamo getPrestamo() {
-
-		return prestamo;
-
-	}
-
-	public void setPrestamo(TipoPrestamo prestamo) {
-
-		this.prestamo = prestamo;
-
 	}
 
 	private String plataforma(TipoMedioAudiovisual medio) {

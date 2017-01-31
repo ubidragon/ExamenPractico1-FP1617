@@ -3,24 +3,14 @@ package gestionDeBibliotecas;
 import java.time.Duration;
 import java.time.LocalDate;
 
-public interface MedioAudiovisual {
+public interface MedioAudiovisual extends Medio{
 
 	String getCodigo();
 
-	String getTitulo();
-
-	Duration getDuracion();
-
-	LocalDate getFechaAdquisicion();
-
-	Double getPrecio();
+	Integer getDuracion();
 
 	TipoMedioAudiovisual getTipo();
 
 	Integer getNumeroDisco();
-
-	TipoPrestamo getPrestamo();
-
-	void setPrestamo(TipoPrestamo prestamo);
 
 }
