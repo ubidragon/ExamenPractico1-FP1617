@@ -1,6 +1,7 @@
 package gestionDeBibliotecas;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -100,15 +101,15 @@ public class BibliotecaImpl implements Biblioteca {
 		this.email = email;
 	}
 	
-	@Override
+
 	public void nuevoLibro(Libro l) {
-		// TODO Auto-generated method stub
+		
 		libros.add(l);
 	}
 
-	@Override
+
 	public void eliminaLibro(Libro l) {
-		// TODO Auto-generated method stub
+		
 		Checkers.check("No existe libro a eliminar", checkLibro(l));
 		libros.remove(l);
 	}
@@ -117,21 +118,27 @@ public class BibliotecaImpl implements Biblioteca {
 		return libros.contains(l);
 	}
 	
-	@Override
+
 	public void nuevoUsuario(Persona p) {
-		// TODO Auto-generated method stub
 		
+		personas.add(p);
 	}
 
-	@Override
+
 	public void eliminaUsuario(Persona p) {
-		// TODO Auto-generated method stub
 		
+		personas.remove(p);
 	}
 
-	@Override
+
 	public void nuevoPrestamo(Libro l, Persona p) {
-		// TODO Auto-generated method stub
+		Checkers.check("Libro y Persona contenidos en biblioteca", checkPrestamos(l, p));
+		prestamos.add(new PrestamoImpl(p,l,LocalDate.now()));
+	}
+	
+	private Boolean checkPrestamos(Libro l, Persona p){
+		
+		return libros.contains(l) && personas.contains(p);
 		
 	}
 
