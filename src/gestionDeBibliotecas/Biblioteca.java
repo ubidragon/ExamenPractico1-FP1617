@@ -3,7 +3,7 @@ package gestionDeBibliotecas;
 import java.util.List;
 import java.util.Set;
 
-public interface Biblioteca extends Comparable<Biblioteca>{
+public interface Biblioteca {
 
 	String getNombre();
 
@@ -31,4 +31,13 @@ public interface Biblioteca extends Comparable<Biblioteca>{
 
 	void setEmail(String email);
 
+	void nuevoLibro(Libro l);
+
+	void eliminaLibro(Libro l);
+
+	void nuevoUsuario(Persona p);
+
+	void eliminaUsuario(Persona p);
+
+	void nuevoPrestamo(Libro l, Persona p);
 }

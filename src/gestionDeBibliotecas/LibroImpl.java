@@ -36,7 +36,7 @@ public class LibroImpl implements Libro {
 
 	private Boolean checkAdquisicion(LocalDate fecha) {
 
-		return fecha.isBefore(LocalDate.now());
+		return fecha.isBefore(LocalDate.now()) || fecha.equals(LocalDate.now());
 	}
 
 	private Boolean checkVentas(Integer c) {

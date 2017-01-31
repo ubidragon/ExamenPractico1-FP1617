@@ -20,7 +20,7 @@ public class PrestamoImpl implements Prestamo {
 	}
 	
 	private Boolean checkFecha(LocalDate fecha){
-		return fecha.isBefore(LocalDate.now());
+		return fecha.isBefore(LocalDate.now()) || fecha.equals(LocalDate.now());
 	}
 
 	public Persona getUsuario() {
