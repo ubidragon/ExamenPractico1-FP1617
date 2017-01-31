@@ -93,9 +93,11 @@ public class PersonaImpl implements Persona {
 
 	public Integer getEdad() {
 
-		return LocalDate.now().until(fecha).getYears();
+		return LocalDate.now().until(getFecha()).getYears();
 	}
 
+	
+	
 	public String getEmail() {
 
 		return email;
@@ -132,7 +134,7 @@ public class PersonaImpl implements Persona {
 	}
 
 	private String formateadorFechas(LocalDate fechas) {
-		DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		String res = fechas.format(f);
 		return res;
 
@@ -162,7 +164,7 @@ public class PersonaImpl implements Persona {
 
 	public String toString() {
 
-		return getDNI() + " - " + getApellidos() + ", " + getNombre() + " - " + formateadorFechas(this.fecha);
+		return getDNI() + " - " + getApellidos() + ", " + getNombre() + " - " + formateadorFechas(getFecha());
 
 	}
 

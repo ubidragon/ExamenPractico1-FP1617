@@ -2,6 +2,7 @@ package gestionDeBibliotecas;
 
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -16,8 +17,7 @@ public class BibliotecaImpl implements Biblioteca {
 	private Set<Persona> personas;
 	private Set<Prestamo> prestamos;
 
-	public BibliotecaImpl(String nombre, String localidad, String email, List<Libro> libros, Set<Persona> personas,
-			Set<Prestamo> prestamos) {
+	public BibliotecaImpl(String nombre, String localidad) {
 		Checkers.check("Checkeo de email", checkEmail(email));
 		Checkers.checkNoNull(nombre);
 		Checkers.checkNoNull(localidad);
@@ -68,17 +68,17 @@ public class BibliotecaImpl implements Biblioteca {
 
 	public List<Libro> getLibros() {
 
-		return new ArrayList<>(libros);
+		return new ArrayList<>(this.libros);
 	}
 
 	public Set<Persona> getPersonas() {
 
-		return new HashSet<>(personas);
+		return new HashSet<>(this.personas);
 	}
 
 	public Set<Prestamo> getPrestamos() {
 
-		return new HashSet<>(prestamos);
+		return new HashSet<>(this.prestamos);
 	}
 
 	public void setDireccion(String direcion) {
@@ -138,8 +138,78 @@ public class BibliotecaImpl implements Biblioteca {
 	
 	private Boolean checkPrestamos(Libro l, Persona p){
 		
-		return libros.contains(l) && personas.contains(p);
+		return (libros.contains(l) && personas.contains(p));
 		
+	}
+	
+	
+
+	public Integer cuentaPrestamos(Persona usuario) {
+		
+		Integer res = 0;
+		
+		for(Prestamo ps: getPrestamos()){
+			if(ps.getUsuario().equals(usuario)){
+				res++;
+			}
+		}
+		return res;
+	}
+
+
+	public Integer cuentaPrestamos(Libro libro) {
+		
+		Integer res = 0;
+		
+		for(Prestamo ps: getPrestamos()){
+			if(ps.getLibro().equals(libro)){
+				res++;
+			}
+		}
+		
+		return res;
+	}
+
+
+	public Integer cuentaPrestamos(Month mes) {
+		Integer res = 0;
+		
+		for(Prestamo ps: getPrestamos()){
+			if(ps.getFechaPrestamo().getMonth().equals(mes)){
+				res++;
+			}
+		}
+		return res;
+	}
+
+
+	public Integer[] cuentaPrestamosPorMes() {
+		
+		return null;
+	}
+
+
+	public Month getMesConMasPrestamos() {
+		
+		return null;
+	}
+
+
+	public List<Libro> seleccionaLibrosSinPrestamos() {
+		
+		return null;
+	}
+
+
+	public Set<Persona> seleccionaUsuariosSinPrestamos() {
+		
+		return null;
+	}
+
+
+	public Boolean tienenTodosLosUsuariosPrestamo() {
+		
+		return null;
 	}
 
 	public boolean equals(Object o) {
