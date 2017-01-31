@@ -40,11 +40,11 @@ public interface ListaReproduccion {
 
 	int getPosicionCancion(String tituloCancion);
 
-	Cancion getCancionMasLarga(); 
-	
+	Cancion getCancionMasLarga();
+
 	Cancion getCancionMasCorta();
-	
-	Set<Artista> getArtistas(); 
+
+	Set<Artista> getArtistas();
 
 	void muestraFotosArtistas();
 }

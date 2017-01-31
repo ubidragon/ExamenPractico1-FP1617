@@ -17,46 +17,39 @@ public class AsignaturaImpl implements Asignatura {
 		this.tipo = tipo;
 	}
 
-	
 	public String getNombre() {
-	
+
 		return asignatura;
 	}
 
-	
 	public Integer getCodigo() {
-	
+
 		return codigo;
 	}
 
-	
 	public Double getCreditos() {
-	
+
 		return creditos;
 	}
 
-	
 	public TipoAsignatura getTipo() {
-	
+
 		return tipo;
 	}
 
-	
 	public Integer getCurso() {
-	
+
 		return curso;
 	}
 
-	
 	public String getDepartamento() {
-	
+
 		return departamento;
 	}
 
-	
 	public void setDepartamento(String dpto) {
-	
-		this.departamento=dpto;
+
+		this.departamento = dpto;
 
 	}
 

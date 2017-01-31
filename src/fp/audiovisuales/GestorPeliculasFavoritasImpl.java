@@ -107,13 +107,13 @@ public class GestorPeliculasFavoritasImpl implements GestorPeliculasFavoritas {
 	}
 
 	public Set<String> getGeneros() {
-		
+
 		Set<String> res = new HashSet<>();
-		
-		for(Pelicula p: getPeliculas()){
+
+		for (Pelicula p : getPeliculas()) {
 			res.addAll(p.getGeneros());
 		}
-			
+
 		return res;
 	}
 

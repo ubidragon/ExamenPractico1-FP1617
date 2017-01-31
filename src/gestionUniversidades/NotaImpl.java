@@ -11,25 +11,24 @@ public class NotaImpl implements Nota {
 
 	@Override
 	public Asignatura getAsignatura() {
-		
+
 		return asignatura;
 	}
 
 	@Override
 	public LocalDate getCursoAcademico() {
-		
+
 		return cursoAcademico;
 	}
 
 	@Override
 	public Convocatoria getConvocatoria() {
-		
+
 		return convocatoria;
 	}
 
 	@Override
 	public Double getValor() {
-		
 
 		return valor;
 	}
@@ -54,7 +53,7 @@ public class NotaImpl implements Nota {
 
 	@Override
 	public Boolean getMencionHonor() {
-		
+
 		return mencion;
 	}
 

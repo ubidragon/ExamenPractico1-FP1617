@@ -16,13 +16,13 @@ public class BecaImpl implements Beca {
 		this.duracion = duracion;
 		this.tipo = tipo;
 	}
-//	
-//	public BecaImpl(String codigo, Double cuantia {
-//		this.codigo = codigo;
-//		this.cuantia = 1500.0;
-//		this.duracion = Duration.;
-//		this.tipo = tipo;
-//	}
+	//
+	// public BecaImpl(String codigo, Double cuantia {
+	// this.codigo = codigo;
+	// this.cuantia = 1500.0;
+	// this.duracion = Duration.;
+	// this.tipo = tipo;
+	// }
 
 	public String getCodigo() {
 

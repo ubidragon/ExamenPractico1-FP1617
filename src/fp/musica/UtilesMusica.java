@@ -9,38 +9,40 @@ import fp.musica.ClienteSpotify;
 import fp.utiles.Imagenes;
 
 public class UtilesMusica {
-	
-	public static ListaReproduccion generaListaReproduccion(String artista, int maxCanciones, ClienteSpotify cliente){
+
+	public static ListaReproduccion generaListaReproduccion(String artista, int maxCanciones, ClienteSpotify cliente) {
 		List<Artista> artistas = cliente.getArtistas(artista);
 		ListaReproduccion lista = new ListaReproduccionImpl(artista);
-		
-		if(!artistas.isEmpty()){
-			List<Album> albumes = cliente.getAlbumesArtista(artistas.get(0).getId());		
-			for(Album a:albumes){			
+
+		if (!artistas.isEmpty()) {
+			List<Album> albumes = cliente.getAlbumesArtista(artistas.get(0).getId());
+			for (Album a : albumes) {
 				lista.incorpora(a);
-			}		
+			}
 			lista.aleatoriza();
-			if(lista.getNumeroCanciones()>maxCanciones){
-				lista.eliminaTrozo(maxCanciones, lista.getNumeroCanciones()-1);
+			if (lista.getNumeroCanciones() > maxCanciones) {
+				lista.eliminaTrozo(maxCanciones, lista.getNumeroCanciones() - 1);
 			}
 		}
 		return lista;
 	}
-	
-	public static ListaReproduccion generaListaDiscografia(String artista, ClienteSpotify cliente){
+
+	public static ListaReproduccion generaListaDiscografia(String artista, ClienteSpotify cliente) {
 		ListaReproduccion res = new ListaReproduccionImpl("Discografía de " + artista);
 		List<Artista> artistas = cliente.getArtistas(artista);
-		if(!artistas.isEmpty()){
-			for(Album a:cliente.getAlbumesArtista(artistas.get(0).getId())){				
+		if (!artistas.isEmpty()) {
+			for (Album a : cliente.getAlbumesArtista(artistas.get(0).getId())) {
 				res.incorpora(a);
 			}
 		}
 		return res;
 	}
-	
-	public static ListaReproduccion generaListaReproduccion(String[] artistas, int maxCancionesPorArtista, ClienteSpotify cliente){
-		ListaReproduccion res = new ListaReproduccionImpl("Varios de "+Arrays.toString(artistas).replace("[", "").replace("]", ""));
-		for(String artista:artistas){
+
+	public static ListaReproduccion generaListaReproduccion(String[] artistas, int maxCancionesPorArtista,
+			ClienteSpotify cliente) {
+		ListaReproduccion res = new ListaReproduccionImpl(
+				"Varios de " + Arrays.toString(artistas).replace("[", "").replace("]", ""));
+		for (String artista : artistas) {
 			ListaReproduccion l = generaListaReproduccion(artista, maxCancionesPorArtista, cliente);
 			res.incorpora(l.getCanciones());
 		}

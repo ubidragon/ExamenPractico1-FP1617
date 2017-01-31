@@ -98,17 +98,15 @@ public class ListaReproduccionImpl implements ListaReproduccion {
 		// TODO: Se resolverá en clase
 		return false;
 	}
-	
 
 	/**
 	 * @return Devuelve la duración total de la lista de reproducción
 	 */
 	public Duration getDuracion() {
-		// TODO: Se resolverá en clase	
+		// TODO: Se resolverá en clase
 		return Duration.ZERO;
 	}
 
-	
 	/**
 	 * @param artista
 	 *            Nombre del artista
@@ -130,7 +128,7 @@ public class ListaReproduccionImpl implements ListaReproduccion {
 		// TODO: Se resolverá en clase
 		return null;
 	}
-	
+
 	/**
 	 * @return Devuelve el conjunto de artistas de la lista de reproducción.
 	 */
@@ -138,16 +136,15 @@ public class ListaReproduccionImpl implements ListaReproduccion {
 		// TODO: Se resolverá en clase
 		return new HashSet<Artista>();
 	}
-	
+
 	/**
 	 * Muestra las fotos de los artistas que aparecen en la lista
 	 */
-	public void muestraFotosArtistas(){
+	public void muestraFotosArtistas() {
 		// TODO: Se resolverá en clase
 	}
-	
-	// A partir de aquí, para resolver en casa
 
+	// A partir de aquí, para resolver en casa
 
 	/**
 	 * @param tituloCancion
@@ -158,10 +155,9 @@ public class ListaReproduccionImpl implements ListaReproduccion {
 	 * 
 	 */
 	public int getPosicionCancion(String tituloCancion) {
-		// TODO: Hacer en casa 	
+		// TODO: Hacer en casa
 		return -1;
 	}
-
 
 	/**
 	 * @return Devuelve la canción con mayor duración de la lista de

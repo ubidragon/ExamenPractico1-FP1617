@@ -2,7 +2,7 @@ package gestionDeBibliotecas;
 
 import java.time.LocalDate;
 
-public interface Persona {
+public interface Persona extends Comparable<Persona> {
 
 	String getDNI();
 

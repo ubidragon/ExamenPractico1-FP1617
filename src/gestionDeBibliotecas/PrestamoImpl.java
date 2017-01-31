@@ -3,6 +3,8 @@ package gestionDeBibliotecas;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import fp.utiles.Checkers;
+
 public class PrestamoImpl implements Prestamo {
 
 	private Persona user;
@@ -10,10 +12,15 @@ public class PrestamoImpl implements Prestamo {
 	private LocalDate fechaPrestamo;
 
 	public PrestamoImpl(Persona user, Libro book, LocalDate fechaPrestamo) {
+		Checkers.check("checkeo fecha", checkFecha(fechaPrestamo));
 		this.user = user;
 		this.book = book;
 		this.fechaPrestamo = fechaPrestamo;
 
+	}
+	
+	private Boolean checkFecha(LocalDate fecha){
+		return fecha.isBefore(LocalDate.now());
 	}
 
 	public Persona getUsuario() {
@@ -66,6 +73,34 @@ public class PrestamoImpl implements Prestamo {
 		String res = fechas.format(f);
 		return res;
 
+	}
+
+	public boolean equals(Object o) {
+		boolean res = false;
+
+		if (o instanceof Prestamo) {
+			Prestamo p = (Prestamo) o;
+			res = getLibro().equals(p.getLibro()) && getUsuario().equals(p.getUsuario())
+					&& getFechaPrestamo().equals(p.getFechaPrestamo());
+		}
+
+		return res;
+	}
+
+	public int hashCode() {
+		return getLibro().hashCode() + getUsuario().hashCode() * 31 + getFechaPrestamo().hashCode() * 31 * 31;
+	}
+
+	public int compareTo(Prestamo p) {
+		int res = getLibro().compareTo(p.getLibro());
+		if (res == 0) {
+			res = getUsuario().compareTo(p.getUsuario());
+			if (res == 0) {
+				res = getFechaPrestamo().compareTo(p.getFechaPrestamo());
+			}
+		}
+
+		return res;
 	}
 
 	public String toString() {

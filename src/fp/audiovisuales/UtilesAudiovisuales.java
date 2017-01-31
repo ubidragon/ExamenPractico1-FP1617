@@ -12,27 +12,23 @@ public class UtilesAudiovisuales {
 	}
 
 	public static GestorPeliculasFavoritas generaPeliculasActor(String nombreActor, ClienteTMDB cliente) {
-		GestorPeliculasFavoritas res = new GestorPeliculasFavoritasImpl(siguienteID(), 
-				"Peliculas de " + nombreActor);
+		GestorPeliculasFavoritas res = new GestorPeliculasFavoritasImpl(siguienteID(), "Peliculas de " + nombreActor);
 		List<MiembroStaff> personas = cliente.getPersonas(nombreActor);
 		MiembroStaff actor = personas.get(0);
-	
+
 		List<Pelicula> peliculasActor = cliente.getPeliculasComoActor(actor.getId());
 		res.nuevasPeliculas(peliculasActor);
-		
-		return res;
-	}
-	
-	public static GestorPeliculasFavoritas generaPeliculasTopAnyo(Integer anyo, ClienteTMDB cliente) {
-		GestorPeliculasFavoritas res = new GestorPeliculasFavoritasImpl(siguienteID(), 
-				"Peliculas Top de " + anyo);
 
-		List<Pelicula> peliculasTop= cliente.getPeliculasTopDeAnyo(anyo);
-		res.nuevasPeliculas(peliculasTop);
-		
 		return res;
 	}
-	
-	
+
+	public static GestorPeliculasFavoritas generaPeliculasTopAnyo(Integer anyo, ClienteTMDB cliente) {
+		GestorPeliculasFavoritas res = new GestorPeliculasFavoritasImpl(siguienteID(), "Peliculas Top de " + anyo);
+
+		List<Pelicula> peliculasTop = cliente.getPeliculasTopDeAnyo(anyo);
+		res.nuevasPeliculas(peliculasTop);
+
+		return res;
+	}
 
 }

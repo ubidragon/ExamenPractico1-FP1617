@@ -74,37 +74,44 @@ public interface GestorPeliculasFavoritas {
 	 * @return Devuelve la película en la que han participado más actores.
 	 */
 	Pelicula getPeliculaMasActores();
-	
+
 	/**
-	 * @return Devuelve el conjunto de actores que ha participado en todas las películas.
+	 * @return Devuelve el conjunto de actores que ha participado en todas las
+	 *         películas.
 	 */
 	Set<MiembroStaff> seleccionaActoresParticipantesTodas();
-	
+
 	/**
-	 * @param director Nombre de director
-	 * @return El conjunto de películas dirigidas por el director dado como parámetro.
+	 * @param director
+	 *            Nombre de director
+	 * @return El conjunto de películas dirigidas por el director dado como
+	 *         parámetro.
 	 */
 	Set<Pelicula> getPeliculasDirigidasPor(String nombreDirector);
-	
+
 	/**
-	 * @return El conjunto de géneros de las películas del gestor.	
+	 * @return El conjunto de géneros de las películas del gestor.
 	 */
 	Set<String> getGeneros();
-	
+
 	/**
-	 * @param any Año
+	 * @param any
+	 *            Año
 	 * @return El conjunto de películas estrenadas en el año dado como parámetro
 	 */
 	Set<Pelicula> getPeliculasAnyo(Integer anyo);
-	
+
 	/**
-	 * @param actor Nombre de actor
-	 * @return El conjunto de las películas en las que trabaja el actor dado como parámetro
+	 * @param actor
+	 *            Nombre de actor
+	 * @return El conjunto de las películas en las que trabaja el actor dado
+	 *         como parámetro
 	 */
 	Set<Pelicula> getPeliculasDeActor(String nombreActor);
-	
+
 	/**
-	 * @return El conjunto de paises a los que pertenecen las peliculas del gestor.
+	 * @return El conjunto de paises a los que pertenecen las peliculas del
+	 *         gestor.
 	 */
 	Set<String> getPaises();
 }
