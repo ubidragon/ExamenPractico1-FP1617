@@ -42,7 +42,7 @@ public class TestBiblioteca {
 		agregarUsuariosYLibros(b1, l2, p2);
 		agregarUsuariosYLibros(b1, l3, p3);
 		System.out.println("\n\n******** Fin de Adiccion de elementos a la Biblioteca b1");
-//		muestraBiblioteca(b1);
+		
 		creacionPrestamos(b1, l3, p);
 		creacionPrestamos(b1, l2, p);
 		creacionPrestamos(b1, l, p);
@@ -54,8 +54,9 @@ public class TestBiblioteca {
 		creacionPrestamos(b1, l, p3);
 		System.out.println(b1.getPrestamos());
 		cuentaPrestamos(b1, l2, p2, Month.JANUARY);
+		cuentaPrestamos(b1, l, p3, Month.DECEMBER);
 		
-		
+		muestraBiblioteca(b1);
 
 	}
 
@@ -69,8 +70,6 @@ public class TestBiblioteca {
 		System.out.println("Libro agregado satisfactoriamente");
 
 	}
-	
-	
 
 	private static void creacionPrestamos(Biblioteca b, Libro l, Persona p) {
 
@@ -88,7 +87,7 @@ public class TestBiblioteca {
 		System.out.println(b.cuentaPrestamos(l));
 		System.out.println("\nPrestamos del Mes: " + m);
 		System.out.println(b.cuentaPrestamos(m));
-		System.out.println("\n\n******** Fin del Informe de Prestamos de " + b);
+		System.out.println("\n\n******** Fin del Informe de Prestamos de " + b + " en el mes de " + m);
 
 	}
 

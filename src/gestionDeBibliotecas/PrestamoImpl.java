@@ -69,7 +69,7 @@ public class PrestamoImpl implements Prestamo {
 	}
 
 	private String formateadorFechas(LocalDate fechas) {
-		DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		String res = fechas.format(f);
 		return res;
 

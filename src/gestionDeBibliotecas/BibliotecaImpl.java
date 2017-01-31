@@ -1,9 +1,9 @@
 package gestionDeBibliotecas;
 
-
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -31,8 +31,8 @@ public class BibliotecaImpl implements Biblioteca {
 		this.personas = new HashSet<>();
 		this.prestamos = new HashSet<>();
 	}
-	
-	private Boolean checkEmail(String email){
+
+	private Boolean checkEmail(String email) {
 		return email == null || (email.contains("@") && email.contains("."));
 	}
 
@@ -100,115 +100,107 @@ public class BibliotecaImpl implements Biblioteca {
 
 		this.email = email;
 	}
-	
 
 	public void nuevoLibro(Libro l) {
-		
+
 		libros.add(l);
 	}
 
-
 	public void eliminaLibro(Libro l) {
-		
+
 		Checkers.check("No existe libro a eliminar", checkLibro(l));
 		libros.remove(l);
 	}
 
-	private Boolean checkLibro(Libro l){
+	private Boolean checkLibro(Libro l) {
 		return libros.contains(l);
 	}
-	
 
 	public void nuevoUsuario(Persona p) {
-		
+
 		personas.add(p);
 	}
 
-
 	public void eliminaUsuario(Persona p) {
-		
+
 		personas.remove(p);
 	}
 
-
 	public void nuevoPrestamo(Libro l, Persona p) {
 		Checkers.check("Libro y Persona contenidos en biblioteca", checkPrestamos(l, p));
-		prestamos.add(new PrestamoImpl(p,l,LocalDate.now()));
+		prestamos.add(new PrestamoImpl(p, l, LocalDate.now()));
 	}
-	
-	private Boolean checkPrestamos(Libro l, Persona p){
-		
-		return (libros.contains(l) && personas.contains(p));
-		
+
+	private Boolean checkPrestamos(Libro l, Persona p) {
+
+		return !(libros.contains(l) && personas.contains(p));
+
 	}
-	
-	
 
 	public Integer cuentaPrestamos(Persona usuario) {
-		
+
 		Integer res = 0;
-		
-		for(Prestamo ps: getPrestamos()){
-			if(ps.getUsuario().equals(usuario)){
+
+		for (Prestamo ps : getPrestamos()) {
+			if (ps.getUsuario().equals(usuario)) {
 				res++;
 			}
 		}
 		return res;
 	}
-
 
 	public Integer cuentaPrestamos(Libro libro) {
-		
+
 		Integer res = 0;
-		
-		for(Prestamo ps: getPrestamos()){
-			if(ps.getLibro().equals(libro)){
+
+		for (Prestamo ps : getPrestamos()) {
+			if (ps.getLibro().getTitulo().equals(libro.getTitulo())) {
 				res++;
 			}
 		}
-		
+
 		return res;
 	}
-
 
 	public Integer cuentaPrestamos(Month mes) {
 		Integer res = 0;
-		
-		for(Prestamo ps: getPrestamos()){
-			if(ps.getFechaPrestamo().getMonth().equals(mes)){
+
+		for (Prestamo ps : getPrestamos()) {
+			if (ps.getFechaPrestamo().getMonth().equals(mes)) {
 				res++;
 			}
 		}
 		return res;
 	}
 
-
 	public Integer[] cuentaPrestamosPorMes() {
-		
-		return null;
-	}
 
+		Integer[] res = new Integer[Month.values().length];
+		Arrays.fill(res, 0);
+		for (Prestamo p : getPrestamos()) {
+			res[p.getFechaPrestamo().getMonth().ordinal()]++;
+		}
+		return res;
+
+	}
 
 	public Month getMesConMasPrestamos() {
-		
+
 		return null;
 	}
-
 
 	public List<Libro> seleccionaLibrosSinPrestamos() {
-		
+
 		return null;
 	}
-
 
 	public Set<Persona> seleccionaUsuariosSinPrestamos() {
-		
+
 		return null;
 	}
 
-
 	public Boolean tienenTodosLosUsuariosPrestamo() {
-		
+
 		return null;
 	}
 
@@ -232,7 +224,5 @@ public class BibliotecaImpl implements Biblioteca {
 		return getNombre() + " (" + getLocalidad() + ")";
 
 	}
-
-	
 
 }
