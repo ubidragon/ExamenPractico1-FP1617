@@ -96,8 +96,6 @@ public class PersonaImpl implements Persona {
 		return LocalDate.now().until(getFecha()).getYears();
 	}
 
-	
-	
 	public String getEmail() {
 
 		return email;

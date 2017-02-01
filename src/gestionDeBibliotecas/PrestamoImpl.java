@@ -18,8 +18,8 @@ public class PrestamoImpl implements Prestamo {
 		this.fechaPrestamo = fechaPrestamo;
 
 	}
-	
-	private Boolean checkFecha(LocalDate fecha){
+
+	private Boolean checkFecha(LocalDate fecha) {
 		return fecha.isBefore(LocalDate.now()) || fecha.equals(LocalDate.now());
 	}
 

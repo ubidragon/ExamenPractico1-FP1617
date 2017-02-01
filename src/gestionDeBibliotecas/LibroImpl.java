@@ -131,8 +131,7 @@ public class LibroImpl implements Libro {
 
 		if (o instanceof Libro) {
 			Libro l = (Libro) o;
-			res = getTitulo().equals(l.getTitulo()) &&
-					getISBN().equals(l.getTitulo());
+			res = getTitulo().equals(l.getTitulo()) && getISBN().equals(l.getTitulo());
 		}
 
 		return res;

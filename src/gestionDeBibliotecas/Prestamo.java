@@ -2,7 +2,7 @@ package gestionDeBibliotecas;
 
 import java.time.LocalDate;
 
-public interface Prestamo extends Comparable<Prestamo>{
+public interface Prestamo extends Comparable<Prestamo> {
 
 	Persona getUsuario();
 

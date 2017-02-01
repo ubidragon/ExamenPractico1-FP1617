@@ -127,7 +127,7 @@ public class BibliotecaImpl implements Biblioteca {
 	}
 
 	public void nuevoPrestamo(Libro l, Persona p) {
-		Checkers.check("Libro y Persona contenidos en biblioteca", checkPrestamos(l, p));
+		Checkers.check("No se encuentra Libro y Persona contenidos en biblioteca", checkPrestamos(l, p));
 		prestamos.add(new PrestamoImpl(p, l, LocalDate.now()));
 	}
 
@@ -179,24 +179,54 @@ public class BibliotecaImpl implements Biblioteca {
 		Arrays.fill(res, 0);
 		for (Prestamo p : getPrestamos()) {
 			res[p.getFechaPrestamo().getMonth().ordinal()]++;
+
+			// switch(p.getFechaPrestamo().getMonth()){
+			// case JANUARY:
+			// res[0]++;
+			// break;
+			// }
 		}
+
 		return res;
 
 	}
 
 	public Month getMesConMasPrestamos() {
 
-		return null;
+		Month res = Month.JANUARY;
+
+		for (Prestamo p : getPrestamos()) {
+			if (cuentaPrestamos(res) < cuentaPrestamos(p.getFechaPrestamo().getMonth())) {
+				res = p.getFechaPrestamo().getMonth();
+			}
+		}
+
+		return res;
 	}
 
 	public List<Libro> seleccionaLibrosSinPrestamos() {
 
-		return null;
+		List<Libro> res = new ArrayList<Libro>();
+		for (Libro l : getLibros()) {
+
+			if (cuentaPrestamos(l) == 0) {
+				res.add(l);
+			}
+
+		}
+		return res;
 	}
 
 	public Set<Persona> seleccionaUsuariosSinPrestamos() {
+		Set<Persona> res = new HashSet<>();
+		for (Persona p : getPersonas()) {
 
-		return null;
+			if (cuentaPrestamos(p) == 0) {
+				res.add(p);
+			}
+
+		}
+		return res;
 	}
 
 	public Boolean tienenTodosLosUsuariosPrestamo() {

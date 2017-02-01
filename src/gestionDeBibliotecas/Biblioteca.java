@@ -41,13 +41,20 @@ public interface Biblioteca {
 	void eliminaUsuario(Persona p);
 
 	void nuevoPrestamo(Libro l, Persona p);
-	
+
 	Integer cuentaPrestamos(Persona usuario);
+
 	Integer cuentaPrestamos(Libro libro);
+
 	Integer cuentaPrestamos(Month mes);
-	Integer [] cuentaPrestamosPorMes();
+
+	Integer[] cuentaPrestamosPorMes();
+
 	Month getMesConMasPrestamos();
+
 	List<Libro> seleccionaLibrosSinPrestamos();
+
 	Set<Persona> seleccionaUsuariosSinPrestamos();
+
 	Boolean tienenTodosLosUsuariosPrestamo();
 }

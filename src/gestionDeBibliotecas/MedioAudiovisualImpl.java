@@ -105,11 +105,11 @@ public class MedioAudiovisualImpl implements MedioAudiovisual {
 	public int hashCode() {
 		return getTitulo().hashCode() + getCodigo().hashCode() * 31;
 	}
-	
-	public int compareTo(MedioAudiovisual m){
+
+	public int compareTo(MedioAudiovisual m) {
 		int res = getTitulo().compareTo(m.getTitulo());
-		if(res==0){
-			res=getCodigo().compareTo(m.getCodigo());
+		if (res == 0) {
+			res = getCodigo().compareTo(m.getCodigo());
 		}
 		return res;
 	}
